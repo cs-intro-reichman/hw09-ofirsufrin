@@ -103,10 +103,10 @@ public class LanguageModel {
             return initialText;
         }
         StringBuilder generateT = new StringBuilder(initialText);
-        while (generateT.length() < textLength + 10) {
+        while (generateT.length() < textLength) {
             String currentWindow = generateT.substring(generateT.length() - windowLength);
             List probs = CharDataMap.get(currentWindow);
-            if (probs != null) {
+            if (probs != null && probs.getSize() > 0) {
                 char nextC = getRandomChar(probs);
                 generateT.append(nextC);
             } else {
