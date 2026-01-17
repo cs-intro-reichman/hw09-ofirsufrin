@@ -77,14 +77,14 @@ public class LanguageModel {
 
     // Returns a random character from the given probabilities list.
 	char getRandomChar(List probs) {
-		double r = Math.random();
+		double r = randomGenerator.nextDouble();
         CharData[] dataArray = probs.toArray();
         for (int i = 0; i < dataArray.length; i++) {
             if (dataArray[i].cp > r) {
                 return dataArray[i].chr;
             }
         }
-		return dataArray[dataArray.length - 1].chr;;
+		return dataArray[dataArray.length - 1].chr;
 	}
 
     /**
@@ -95,7 +95,10 @@ public class LanguageModel {
 	 * @return the generated text
 	 */
 	public String generate(String initialText, int textLength) {
-		// Your code goes here
+        if (initialText.length() < windowLength) {
+            return initialText;
+        }
+
         return "";
 	}
 
