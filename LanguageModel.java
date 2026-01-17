@@ -95,6 +95,10 @@ public class LanguageModel {
 	 * @return the generated text
 	 */
 	public String generate(String initialText, int textLength) {
+        if (initialText.length() >= textLength) {
+            return initialText.substring(0, textLength);
+
+        }
         if (initialText.length() < windowLength) {
             return initialText;
         }
