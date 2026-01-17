@@ -98,8 +98,18 @@ public class LanguageModel {
         if (initialText.length() < windowLength) {
             return initialText;
         }
-
-        return "";
+        StringBuilder generateT = new StringBuilder(initialText);
+        while (generateT.length() < textLength) {
+            String currentWindow = generateT.substring(generateT.length() - windowLength);
+            List probs = CharDataMap.get(currentWindow);
+            if (probs != null) {
+                char nextC = getRandomChar(probs);
+                generateT.append(nextC);
+            } else {
+                break;
+            }
+        }
+        return generateT.toString();
 	}
 
     /** Returns a string representing the map of this language model. */
