@@ -53,6 +53,9 @@ public class LanguageModel {
             probs.update(c);
             window = window.substring(1) + c;
         }
+        if (CharDataMap.get(window) == null) {
+            CharDataMap.put(window, new List());
+        }
             for (List probs : CharDataMap.values()) {
                 calculateProbabilities(probs);
             }

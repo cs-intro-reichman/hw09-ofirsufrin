@@ -24,7 +24,7 @@ public class List {
 
     /** Returns the CharData of the first element in this list. */
     public CharData getFirst() {
-        // Your code goes here
+        if (first == null) return null;
         return first.cp;
     }
 
